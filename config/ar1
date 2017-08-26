@@ -1,0 +1,23 @@
+#nop vim:syntax=tintin++
+#ses ar 173.255.255.197 8888
+#alias {xz} {@force #41032=}
+#alias {cd} {@force #41032=}
+#high {Rainbow } red
+#high Unseelie red
+#high Sidhe red
+#high Faerie red
+#high RainbowDolly magenta
+#high RD magenta
+#alias gc {chat geekchat=}
+#alias dc {chat dollychat=}
+#alias sa #nop
+#high TCD {b yellow}
+#high DOLLY {b magenta}
+#high D.O.L.L.Y. {b magenta}
+#high {Daughters Of...} {b blue}
+#high CD yellow
+#high CleoDolly yellow
+#high RD3+ magenta
+#high TD blue
+#high TessDolly blue
+connect #3928 %p

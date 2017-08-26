@@ -1,0 +1,9 @@
+#nop vim:syntax=tintin++
+#nop ses spr 139.162.187.213 23
+#ssl spr muck.sprmuck.org 23551
+#nop ssl spr 139.162.182.75 23551
+#high {Rainbow } red
+#high Unseelie red
+#high Sidhe red
+#high Faerie red
+connect #182262 %p

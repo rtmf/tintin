@@ -1,0 +1,13 @@
+#con spe off
+#spl
+#high page green
+#high Page green
+#high whisper green
+#high Whisper green
+#high {from afar} green
+#high {From afar} green
+#var tsfmt {%Y.%m.%d|%H:%M:%S}
+#unfunction {timestamp}
+#unevent {RECEIVED LINE}
+#function {timestamp} {#format utime {%U}; #format result {%t.%m} {$tsfmt} {$utime % 1000000 / 100000}}
+#event {RECEIVED LINE} {#echo {%s} {<048>[<058>@timestamp{}<048>] <038>|<078>\};}

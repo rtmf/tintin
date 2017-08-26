@@ -1,0 +1,53 @@
+#!/usr/bin/zsh
+if [ -x ${HOME}/tt++ ]
+then
+	TT=${HOME}/tt++
+elif [ -x ${HOME}/tintin/tt++ ]
+then
+	TT=${HOME}/tintin/tt++
+else
+	TT=$(which tt++)
+fi
+if [ -f ${HOME}/tintin/config/${1} ]
+then
+	CFG=${HOME}/tintin/config/${1}
+	CFGNAME=${1}
+	$([ -f ${CFG}.pass ] && cat ${CFG}.pass | {
+	while read kv 
+	do
+		echo export ${kv%%=*}="${kv#*=}"
+	done })
+elif [ "x${1}" != "x" ] && [ -f ${1} ]
+then
+	CFG=${1}
+	CFGNAME=$(basename ${1})
+else
+	echo NO CONFIG SELECTED
+	echo PLEASE SELECT A CONFIG
+	echo AVAILABLE CONFIGS:
+	for each in ${HOME}/tintin/config/*
+	do
+		if [ "$(basename ${each})" != "default" ]
+		then
+			echo $(basename ${each})
+		fi
+	done
+	exit 1
+fi
+LOG=${HOME}/tintin/log/${CFGNAME}
+TTCFG=$(dirname $CFG)
+echo Launching TINTIN++
+echo TT=$TT
+echo CFG=$CFG
+echo TTCFG=$TTCFG
+echo CFGNAME=$CFGNAME
+echo LOG=$LOG
+tmpconfig=${HOME}/tintin/tmp/${CFGNAME}
+rm ${tmpconfig}
+touch ${tmpconfig}
+for conf in ${TTCFG}/default-top ${CFG} ${TTCFG}/default-bot
+do
+	echo $conf
+	[ -f ${conf} ] && cat ${conf} | sed -e "s/\\%p/${PASSWD}/g" | tee -a ${tmpconfig}
+done 
+${TT} ${tmpconfig}

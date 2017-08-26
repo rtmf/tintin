@@ -1,0 +1,9 @@
+#split
+#unhigh Rainbow
+#unhigh Evangela
+#unhigh Natasha
+#unhigh Sandra
+#high Rainbow {bold magenta}
+#high Evangela {magenta}
+#high Natasha {red}
+#high Sandra {bold red}
